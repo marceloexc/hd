@@ -44,7 +44,8 @@
 				</div>
 
 				<?php
-				$banner_array = array("/static/banner.jpg", "/static/banner2.jpg", "/static/keepoff.jpg");
+				$banner_array = array("/static/banner.jpg", "/static/banner2.jpg", "/static/keepoff.jpg",
+				"/static/van.JPG");
 
 				$banner_image_key = array_rand($banner_array, 1);
 
@@ -70,7 +71,7 @@
 
 		<footer>
 			<?php
-			$footer_array = array("/static/soriginal.jpg", "/static/lunch.jpeg", "/static/dusk.jpeg", "/static/still.gif", "/static/att.jpg", "/static/light.jpg", "/static/msp.jpg", "/static/chrysler.jpg", "/static/hat.png", "/static/hardstaff.webp", "/static/hardstaff2.webp");
+			$footer_array = array("/static/soriginal.jpg", "/static/lunch.jpeg", "/static/dusk.jpeg", "/static/still.gif", "/static/att.jpg", "/static/light.jpg", "/static/msp.jpg", "/static/chrysler.jpg", "/static/hat.png", "/static/hardstaff.webp", "/static/hardstaff2.webp", "/static/brady.jpg", "/static/tunnel.gif", "/static/cinema.jpg");
 
 			$footer_image_key = array_rand($footer_array, 1);
 

@@ -96,7 +96,7 @@ class BoardListingsRenderer
         $files = scandir($this->directory);
 
         foreach ($files as $f) {
-            if (in_array($f, ['.', '..', '.git', 'static'])) continue;
+            if (in_array($f, ['.', '..', '.git', 'static', '.nova'])) continue;
 
             $full_path = $this->directory . DIRECTORY_SEPARATOR . $f;
 
