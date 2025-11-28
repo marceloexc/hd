@@ -12,6 +12,7 @@ class Board
     private string $dir_name;
 	public BoardType $type;
 	public int $date_unix;
+	public string $description;
 
 	public function __construct(string $path, string $dir_name)
 	{
@@ -20,11 +21,7 @@ class Board
 		$this->type = $this->getBoardType();
 		$this->date_unix = $this->getBoardDate();
         $this->title = $this->getBoardTitle();
-		/* print_r($this->path);
-		   print_r($this->type);
-		   print_r($this->date_unix);
-
-		   echo "<br>"; */
+		$this->description = $this->getBoardDescription();
 	}
 
 	private function getBoardType(): BoardType
@@ -64,6 +61,11 @@ class Board
 				return $date;
 		}
 	}
+	
+	public function getCleanPath(): string
+	{
+		return '/' . $this->dir_name . '/';
+	}
 
 	private function getBoardTitle(): string
 	{
@@ -77,6 +79,24 @@ class Board
             return $this->dir_name;
 		}
 	}
+	
+	private function getBoardDescription(): string
+		{
+			switch ($this->type)
+			{
+				case BoardType::ConfigFile:
+					$ini_array = parse_ini_file("$this->path/config.ini", false);
+					if (array_key_exists('description', $ini_array)) {
+						$description = $ini_array['description'];
+						return $description;
+					}
+					else {
+						return "";
+					}
+				default:
+					return "";
+			}
+		}
 
 }
 
@@ -112,14 +132,23 @@ class BoardListingsRenderer
 
 			if ($board->type == BoardType::Naked) {
 				echo "<li>
-            <a href=\"{$board->path}/\">{$board->title}</a>
+            <a href=\"{$board->getCleanPath()}\">{$board->title}</a>
           </li>";
 				
 			} else {
-				echo "<li>
-            <a href=\"{$board->path}/\">{$board->title}</a>
-            | {$formattedDate}
-          </li>";
+				
+				if ($board->description != "") {
+					echo "<li>
+						<a href=\"{$board->getCleanPath()}\">{$board->title}</a>
+						| {$board->description}
+					  </li>";
+				} else {
+					echo "<li>
+						<a href=\"{$board->getCleanPath()}\">{$board->title}</a>
+						| {$formattedDate}
+					  </li>";
+				}
+
 			}
         }
 	}

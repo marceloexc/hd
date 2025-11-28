@@ -1,155 +1,56 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Western Digital</title>
-		<link rel="stylesheet" href="style.css" type="text/css">
-		<link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<script src="hdr.js"> </script>
-		<?php
-		include 'render_board.php';
-		?>
-	</head>
-	<body>
-		<main>
-			<header>
-				<div class="video-text">
-					
-					<video class="hdr" id="bright" autoplay muted loop playsinline>
-						<source src="/static/hdr.webm" type="video/webm">
-						<source src="/static/hdr.mp4" type="video/mp4">
-					</video>
+<?php
 
-					<video class="sdr" id="fallback" autoplay muted loop playsinline>
-						<source src="/static/black.mp4" type="video/mp4">
-					</video>
-					
+$uri = urldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 
-					<svg class="hdr-compatible" id="hdr" viewBox="0 -40 500 120" preserveAspectRatio="xMidYMid meet">
-						<defs>
-							<clipPath id="clip" clipPathUnits="userSpaceOnUse">
-								<text x="0%" y="100%"
-									  text-anchor="start"
-
-									  font-family="HappyTimes, Tahoma"
-									  font-weight="100"
-									  font-size="160"
-									  letter-spacing="-12">
-									<tspan>Hard</tspan>
-									<tspan x="0%" y="248">Drive</tspan>
-								</text>
-							</clipPath>
-						</defs>
-					</svg>
-				</div>
-
-				<?php
-				$banner_array = array("/static/banner.jpg", "/static/banner2.jpg", "/static/keepoff.jpg",
-				"/static/van.JPG");
-
-				$banner_image_key = array_rand($banner_array, 1);
-
-				$header_img = $banner_array[$banner_image_key];
-				echo "<img src=$header_img>";
-				
-				?>
-				<img static/banner.jpg">
-			</header>
-			<h3>
-			</h3>
-			<ul style="list-style: none; padding-left: 20px;">
-				<?php
-				$directory = ".";
-				$files = scandir($directory);
-
-				$boards = new BoardListingsRenderer(".");
-				$boards->render();
-			
-				?>
-			</ul>
-		</main>
-
-		<footer>
-			<?php
-			$footer_array = array("/static/soriginal.jpg", "/static/lunch.jpeg", "/static/dusk.jpeg", "/static/still.gif", "/static/att.jpg", "/static/light.jpg", "/static/msp.jpg", "/static/chrysler.jpg", "/static/hat.png", "/static/hardstaff.webp", "/static/hardstaff2.webp", "/static/brady.jpg", "/static/tunnel.gif", "/static/cinema.jpg");
-
-			$footer_image_key = array_rand($footer_array, 1);
-
-			$footer_img = $footer_array[$footer_image_key];
-			
-			echo "<img src=$footer_img >"
+$rootPath    = __DIR__ . $uri;
+$contentPath = __DIR__ . '/content' . $uri;
 
 
-			?>
+// serve static files 
+if ($uri !== '/' && file_exists($rootPath) && is_file($rootPath)) {
+	return false;
+}
 
-			<p>
-				cool links
-			</p>
+	// dir exists but no index → 404 
+if ($uri === '/') {
+	require __DIR__ . '/main_page.php';
+	exit;
+}
 
-			<a href="https://rm2000.app">rm2000 tape recorder for macintosh</a>
-			<br>
-			<a href="https://wiki.xxiivv.com">devine lu linvega</a>
-			<br>
-			<a href="https://valvearchive.com">valve archive</a>
-			<br>
-			<a href="https://stanleylieber.com/">stanley lieber</a>
-			<br>
-			<a href="https://www.epiclylaterd.com/">epicly later'd</a>
-			<br>
-			<a href="https://howcouldyoudothisto.us/">how could you do this to us</a>
-			<br>
-			<a href="https://otto-b.info/" >otto benson</a>
-			<br>
-			<a href="https://www.php.net/">php</a>
-			<br>
-				<a href="https://www.johnnyhardstaff.com/home/future-of-gaming">hardstaff at his best</a>
-			<br>
-			<a href="https://orllewin.uk/pcr/">pudsey clough radio</a>
-			<br>
-			<a href="https://emacsformacos.com/">emacs for mac os</a>
-			<br>
-			<!-- <a href="http://www.danamania.com/print/">cool nerdy posters</a>
-				 <br> -->
-			
-				<?php
-
-				function formatBytes($bytes, $precision = 2) {
-					$units = ['B', 'KB', 'mb', 'GB', 'TB'];
-
-					$bytes = max($bytes, 0);
-					$pow = floor(($bytes ? log($bytes) : 0) / log(1024));
-					$pow = min($pow, count($units) - 1);
-
-					$bytes /= pow(1024, $pow);
-					// this will also work in place of the above line:
-					// $bytes /= (1 << (10 * $pow));
-
-					return round($bytes, $precision) . $units[$pow];
-				}
+if (file_exists($contentPath) && is_file($contentPath)) {
+	$mimeType = mime_content_type($contentPath);
+	if ($mimeType) {
+		header('Content-Type: ' . $mimeType);
+	}
+	
+	readfile($contentPath);
+	exit;
+}
 
 
-				$total_size = 0;
-				$di = new RecursiveDirectoryIterator('.');
-				foreach (new RecursiveIteratorIterator($di) as $filename => $file) {
-					if($file->isFile()) {
-						/* echo $filename . ' - ' . $file->getSize() . ' bytes <br/>'; */
-						$total_size += $file->getSize();
-					}
-				}
+// dir inside /content → serve its index.php or index.html
+if (is_dir($contentPath)) {
+	foreach (['index.php', 'index.html'] as $indexFile) {
+		$index = $contentPath . '/' . $indexFile;
+		if (file_exists($index)) {
+			if (pathinfo($index, PATHINFO_EXTENSION) === 'php') {
+				require $index;
+			} else {
+				readfile($index);
+			}
+			exit;
+		}
+	}
+	http_response_code(404);
+	readfile(__DIR__ . '/404.html');
+	exit;
+}
 
-				$total_size_formatted = formatBytes($total_size);
+if (!file_exists($contentPath)) {
+	http_response_code(404);
+	readfile(__DIR__ . '/404.html');
+	exit;
+}
 
-				echo "<p>hosted on debian</p>"; //in bytes
-				?>
 
-			<br>	<br>
-			<p>
-				marcelo mendez 2025
-			</p>
-
-			
-		</footer>
-
-	</body>
-
-</html>
+require __DIR__ . '/main_page.php';

@@ -41,7 +41,7 @@ header {
 	}
 }
 
-img {
+img, .footer-vid {
   max-width: 100%;
   height: auto;
   display: block;
@@ -62,7 +62,7 @@ li {
 	padding-block: 2px;
 }
 
-video {
+.clip {
   -webkit-clip-path: url(#clip);
   clip-path: url(#clip);
   position: absolute;
@@ -75,7 +75,7 @@ video {
   
 }
 
-video.show {
+.clip.show {
 	opacity: 1;
 }
 
