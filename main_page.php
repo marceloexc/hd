@@ -45,7 +45,7 @@
 
 				<?php
 				$banner_array = array("/static/banner.jpg", "/static/banner2.jpg", "/static/keepoff.jpg",
-				"/static/van.JPG", "/static/box.jpeg", "/static/god.jpeg");
+				"/static/van.JPG", "/static/box.jpeg", "/static/god.jpeg", "/static/cig.jpg", "/static/oxxo.JPG");
 
 				$banner_image_key = array_rand($banner_array, 1);
 
@@ -68,7 +68,23 @@
 
 		<footer>
 			<?php
-			$footer_array = array("/static/soriginal.jpg", "/static/lunch.jpeg", "/static/dusk.jpeg", "/static/still.gif", "/static/att.jpg", "/static/light.jpg", "/static/msp.jpg", "/static/chrysler.jpg", "/static/hat.png", "/static/hardstaff.webp", "/static/hardstaff2.webp", "/static/brady.jpg", "/static/tunnel.gif", "/static/cinema.jpg", "/static/crash.mp4", "/static/mendez.jpeg", "/static/delft.png");
+			$footer_array = array("/static/soriginal.jpg", 
+			"/static/lunch.jpeg", 
+			"/static/dusk.jpeg", 
+			"/static/still.gif", 
+			"/static/att.jpg", 
+			"/static/light.jpg", 
+			"/static/msp.jpg", 
+			"/static/chrysler.jpg", 
+			"/static/hat.png", 
+			"/static/hardstaff.webp", 
+			"/static/hardstaff2.webp", 
+			"/static/brady.jpg", 
+			// "/static/tunnel.gif", 
+			"/static/cinema.jpg", 
+			"/static/crash.mp4", 
+			"/static/mendez.jpeg", 
+			"/static/delft.png");
 
 			$footer_image_key = array_rand($footer_array, 1);
 
@@ -103,11 +119,15 @@
 			<br>
 			<a href="https://otto-b.info/" >otto benson</a>
 			<br>
+			<a href="https://www.unchangingwindow.com/content/">unchanging window</a>
+			<br>
 			<a href="https://www.php.net/">php</a>
 			<br>
 				<a href="https://www.johnnyhardstaff.com/home/future-of-gaming">hardstaff at his best</a>
 			<br>
 			<a href="https://orllewin.uk/pcr/">pudsey clough radio</a>
+			<br>
+			<a href="https://eerilyrealistic.com/">eerilyrealistic</a>
 			<br>
 			<a href="https://emacsformacos.com/">emacs for mac os</a>
 			<br>
