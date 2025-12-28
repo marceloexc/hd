@@ -14,7 +14,7 @@
 		<main>
 			<header>
 				<div class="video-text">
-					
+
 					<video class="hdr clip" id="bright" autoplay muted loop playsinline>
 						<source src="/static/hdr.webm" type="video/webm">
 						<source src="/static/hdr.mp4" type="video/mp4">
@@ -23,7 +23,7 @@
 					<video class="sdr clip" id="fallback" autoplay muted loop playsinline>
 						<source src="/static/black.mp4" type="video/mp4">
 					</video>
-					
+
 
 					<svg class="hdr-compatible" id="hdr" viewBox="0 -40 500 120" preserveAspectRatio="xMidYMid meet">
 						<defs>
@@ -45,15 +45,14 @@
 
 				<?php
 				$banner_array = array("/static/banner.jpg", "/static/banner2.jpg", "/static/keepoff.jpg",
-				"/static/van.JPG", "/static/box.jpeg", "/static/god.jpeg", "/static/cig.jpg", "/static/oxxo.JPG");
+									  "/static/van.JPG", "/static/box.jpeg", "/static/god.jpeg", "/static/cig.jpg", "/static/oxxo.JPG");
 
 				$banner_image_key = array_rand($banner_array, 1);
 
 				$header_img = $banner_array[$banner_image_key];
 				echo "<img src=$header_img>";
-				
+
 				?>
-				<img static/banner.jpg">
 			</header>
 			<h3>
 			</h3>
@@ -61,43 +60,43 @@
 				<?php
 				$boards = new BoardListingsRenderer("content");
 				$boards->render();
-			
+
 				?>
 			</ul>
 		</main>
 
 		<footer>
 			<?php
-			$footer_array = array("/static/soriginal.jpg", 
-			"/static/lunch.jpeg", 
-			"/static/dusk.jpeg", 
-			"/static/still.gif", 
-			"/static/att.jpg", 
-			"/static/light.jpg", 
-			"/static/msp.jpg", 
-			"/static/chrysler.jpg", 
-			"/static/hat.png", 
-			"/static/hardstaff.webp", 
-			"/static/hardstaff2.webp", 
-			"/static/brady.jpg", 
-			// "/static/tunnel.gif", 
-			"/static/cinema.jpg", 
-			"/static/crash.mp4", 
-			"/static/mendez.jpeg", 
-			"/static/delft.png");
+			$footer_array = array("/static/soriginal.jpg",
+								  "/static/lunch.jpeg",
+								  "/static/dusk.jpeg",
+								  "/static/still.gif",
+								  "/static/att.jpg",
+								  "/static/light.jpg",
+								  "/static/msp.jpg",
+								  "/static/chrysler.jpg",
+								  "/static/hat.png",
+								  "/static/hardstaff.webp",
+								  "/static/hardstaff2.webp",
+								  "/static/brady.jpg",
+								  "/static/cinema.jpg",
+								  "/static/crash.mp4",
+								  "/static/mendez.jpeg",
+								  "/static/delft.png",
+								  "/static/shine3.gif",
+								  "/static/ween.jpg",
+								  "/static/ugly_boy.png");
 
 			$footer_image_key = array_rand($footer_array, 1);
 
 			$footer_img = $footer_array[$footer_image_key];
-			
+
 			if (str_ends_with($footer_img, ".mp4")) {
 				echo "<video src='$footer_img' class='footer-vid' autoplay muted loop playsinline ></video>";
 			} else {
 				echo "<img src=$footer_img >";
 
 			}
-			
-
 
 			?>
 
@@ -141,41 +140,41 @@
 			</div>
 			<?php
 
-				function formatBytes($bytes, $precision = 2) {
-					$units = ['B', 'KB', 'mb', 'GB', 'TB'];
+			function formatBytes($bytes, $precision = 2) {
+				$units = ['B', 'KB', 'mb', 'GB', 'TB'];
 
-					$bytes = max($bytes, 0);
-					$pow = floor(($bytes ? log($bytes) : 0) / log(1024));
-					$pow = min($pow, count($units) - 1);
+				$bytes = max($bytes, 0);
+				$pow = floor(($bytes ? log($bytes) : 0) / log(1024));
+				$pow = min($pow, count($units) - 1);
 
-					$bytes /= pow(1024, $pow);
-					// this will also work in place of the above line:
-					// $bytes /= (1 << (10 * $pow));
+				$bytes /= pow(1024, $pow);
+				// this will also work in place of the above line:
+				// $bytes /= (1 << (10 * $pow));
 
-					return round($bytes, $precision) . $units[$pow];
+				return round($bytes, $precision) . $units[$pow];
+			}
+
+
+			$total_size = 0;
+			$di = new RecursiveDirectoryIterator('.');
+			foreach (new RecursiveIteratorIterator($di) as $filename => $file) {
+				if($file->isFile()) {
+					/* echo $filename . ' - ' . $file->getSize() . ' bytes <br/>'; */
+					$total_size += $file->getSize();
 				}
+			}
 
+			$total_size_formatted = formatBytes($total_size);
 
-				$total_size = 0;
-				$di = new RecursiveDirectoryIterator('.');
-				foreach (new RecursiveIteratorIterator($di) as $filename => $file) {
-					if($file->isFile()) {
-						/* echo $filename . ' - ' . $file->getSize() . ' bytes <br/>'; */
-						$total_size += $file->getSize();
-					}
-				}
-
-				$total_size_formatted = formatBytes($total_size);
-
-				echo "<p>hosted on debian</p>"; //in bytes
-				?>
+			echo "<p>hosted on debian</p>"; //in bytes
+			?>
 
 			<br>	<br>
 			<p>
 				marcelo mendez 2025
 			</p>
 
-			
+
 		</footer>
 
 	</body>
