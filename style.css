@@ -14,6 +14,7 @@ body {
 	font-size: 70%;
 
 	list-style: square;
+	
 }
 
 article {
@@ -60,6 +61,14 @@ svg{
 
 li {
 	padding-block: 2px;
+}
+
+.listing a {
+	cursor: url("/static/open.svg"), pointer;
+}
+
+.listing a:hover{
+	background-color: bisque;
 }
 
 .clip {

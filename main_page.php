@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>High Definition</title>
+		<title>Disco duro</title>
 		<link rel="stylesheet" href="style.css" type="text/css">
 		<link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -57,7 +57,7 @@
 			</header>
 			<h3>
 			</h3>
-			<ul style="list-style: none; padding-left: 20px;">
+			<ul style="list-style: none; padding-left: 20px;" class="listing">
 				<?php
 				$boards = new BoardListingsRenderer("content");
 				$boards->render();
@@ -105,36 +105,41 @@
 				cool links
 			</p>
 
-			<a href="https://rm2000.app">rm2000 tape recorder for macintosh</a>
-			<br>
-			<a href="https://wiki.xxiivv.com">devine lu linvega</a>
-			<br>
-			<a href="https://valvearchive.com">valve archive</a>
-			<br>
-			<a href="https://stanleylieber.com/">stanley lieber</a>
-			<br>
-			<a href="https://www.epiclylaterd.com/">epicly later'd</a>
-			<br>
-			<a href="https://howcouldyoudothisto.us/">how could you do this to us</a>
-			<br>
-			<a href="https://otto-b.info/" >otto benson</a>
-			<br>
-			<a href="https://www.unchangingwindow.com/content/">unchanging window</a>
-			<br>
-			<a href="https://www.php.net/">php</a>
-			<br>
+			<div class="listing">
+				<a href="https://rm2000.app">rm2000 tape recorder for macintosh</a>
+				<br>
+				<a href="https://wiki.xxiivv.com">devine lu linvega</a>
+				<br>
+				<a href="https://valvearchive.com">valve archive</a>
+				<br>
+				<a href="https://stanleylieber.com/">stanley lieber</a>
+				<br>
+				<a href="https://www.epiclylaterd.com/">epicly later'd</a>
+				<br>
+				<a href="https://howcouldyoudothisto.us/">how could you do this to us</a>
+				<br>
+				<a href="https://otto-b.info/" >otto benson</a>
+				<br>
+				<a href="https://www.unchangingwindow.com/content/">unchanging window</a>
+				<br>
+				<a href="https://www.php.net/">php</a>
+				<br>
+				<a href="https://ja-cob.itch.io/hyper">hyperkidmorph2mr.gunner</a>
+				<br>
+				<!-- <a href="https://twitter.com/krezrg_1">krezrg_1</a>
+					 <br> -->
 				<a href="https://www.johnnyhardstaff.com/home/future-of-gaming">hardstaff at his best</a>
-			<br>
-			<a href="https://orllewin.uk/pcr/">pudsey clough radio</a>
-			<br>
-			<a href="https://eerilyrealistic.com/">eerilyrealistic</a>
-			<br>
-			<a href="https://emacsformacos.com/">emacs for mac os</a>
-			<br>
-			<!-- <a href="http://www.danamania.com/print/">cool nerdy posters</a>
-				 <br> -->
-			
-				<?php
+				<br>
+				<a href="https://orllewin.uk/pcr/">pudsey clough radio</a>
+				<br>
+				<a href="https://eerilyrealistic.com/">eerilyrealistic</a>
+				<br>
+				<a href="https://emacsformacos.com/">emacs for mac os</a>
+				<br>
+				<!-- <a href="http://www.danamania.com/print/">cool nerdy posters</a>
+					 <br> -->
+			</div>
+			<?php
 
 				function formatBytes($bytes, $precision = 2) {
 					$units = ['B', 'KB', 'mb', 'GB', 'TB'];
