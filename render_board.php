@@ -27,10 +27,6 @@ class Board
         if ($this->type == BoardType::ConfigFile) {
             $this->visible = $this->getBoardVisibility();
         }
-
-        if ($this->visible) {
-            echo "$this->title is visible\n";
-        }
 	}
 
 	private function getBoardType(): BoardType

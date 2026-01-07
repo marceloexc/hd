@@ -91,3 +91,19 @@ li {
 figcaption {
 	padding-inline: 1px;
 }
+
+#fallback {
+	filter: brightness(0%);
+
+	animation: brightness-animation 0.5s ease-in-out forwards;
+}
+
+@keyframes brightness-animation {
+	from {
+		filter: brightness(0%);
+	}
+	to {
+		filter: brightness(100%);
+	}
+}
+		
