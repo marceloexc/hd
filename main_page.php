@@ -85,7 +85,8 @@
 								  "/static/delft.png",
 								  "/static/shine3.gif",
 								  "/static/ween.jpg",
-								  "/static/ugly_boy.png");
+								  "/static/ugly_boy.png",
+								  "/static/wejdas.jpg");
 
 			$footer_image_key = array_rand($footer_array, 1);
 

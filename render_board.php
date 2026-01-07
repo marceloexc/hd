@@ -13,6 +13,7 @@ class Board
 	public BoardType $type;
 	public int $date_unix;
 	public string $description;
+	public bool $visible = true;
 
 	public function __construct(string $path, string $dir_name)
 	{
@@ -22,6 +23,14 @@ class Board
 		$this->date_unix = $this->getBoardDate();
         $this->title = $this->getBoardTitle();
 		$this->description = $this->getBoardDescription();
+
+        if ($this->type == BoardType::ConfigFile) {
+            $this->visible = $this->getBoardVisibility();
+        }
+
+        if ($this->visible) {
+            echo "$this->title is visible\n";
+        }
 	}
 
 	private function getBoardType(): BoardType
@@ -98,6 +107,19 @@ class Board
 			}
 		}
 
+    private function getBoardVisibility(): bool
+    {
+        $ini_array = parse_ini_file("$this->path/config.ini", false);
+        if (array_key_exists("visible", $ini_array)) {
+            $visible = $ini_array['visible'];
+            return $visible;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
 }
 
 
@@ -127,6 +149,8 @@ class BoardListingsRenderer
         usort($this->boards, fn($b, $a) => $b->date_unix <=> $a->date_unix);
 		
         foreach ($this->boards as $board) {
+
+            if (!$board->visible) { continue; }
 
 			$formattedDate = strtolower(date('M j, Y', $board->date_unix));
 
