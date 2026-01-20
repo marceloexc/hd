@@ -124,14 +124,14 @@
 				cool links
 			</p>
 
-			<div class="listing">
+			<div class="listing sidebar">
 				<a href="https://rm2000.app">rm2000 tape recorder for macintosh</a>
+				<br>
+				<a href="https://stanleylieber.com/">stanley lieber</a>
 				<br>
 				<a href="https://wiki.xxiivv.com">devine lu linvega</a>
 				<br>
 				<a href="https://valvearchive.com">valve archive</a>
-				<br>
-				<a href="https://stanleylieber.com/">stanley lieber</a>
 				<br>
 				<a href="https://www.epiclylaterd.com/">epicly later'd</a>
 				<br>
@@ -145,6 +145,8 @@
 				<br>
 				<a href="https://ja-cob.itch.io/hyper">hyperkidmorph2mr.gunner</a>
 				<br>
+				<a href="https://fieldoflove.tumblr.com">fieldoflove</a>
+				<br>
 				<!-- <a href="https://twitter.com/krezrg_1">krezrg_1</a>
 					 <br> -->
 				<a href="https://www.johnnyhardstaff.com/home/future-of-gaming">hardstaff at his best</a>
@@ -153,10 +155,12 @@
 				<br>
 				<a href="https://eerilyrealistic.com/">eerilyrealistic</a>
 				<br>
+				<a href="https://felicityjlord.online">felicity j lord</a>
+				<br>
 				<a href="https://emacsformacos.com/">emacs for mac os</a>
 				<br>
-				<!-- <a href="http://www.danamania.com/print/">cool nerdy posters</a>
-					 <br> -->
+				<a href="http://www.danamania.com/print/">dana's print archive</a>
+				<br>
 			</div>
 			<?php
 
@@ -187,11 +191,12 @@
 			$total_size_formatted = formatBytes($total_size);
 
 			echo "<p>hosted on debian</p>"; //in bytes
+			/* echo "<p>$total_size_formatted</p>"; */
 			?>
 
 			<br>	<br>
 			<p>
-				marcelo mendez 2025
+				marcelo mendez 2025. <a href="/all.html">all</a>
 			</p>
 
 
