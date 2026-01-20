@@ -44,8 +44,20 @@
 				</div>
 
 				<?php
-				$banner_array = array("/static/banner.jpg", "/static/banner2.jpg", "/static/keepoff.jpg",
-									  "/static/van.JPG", "/static/box.jpeg", "/static/god.jpeg", "/static/cig.jpg", "/static/oxxo.JPG");
+				$banner_array = array("/static/banner.jpg",
+									  "/static/banner2.jpg",
+									  "/static/van.JPG",
+									  "/static/box.jpeg",
+									  "/static/god.jpeg",
+									  "/static/cig.jpg",
+									  "/static/oxxo.JPG",
+									  "/static/shack.jpg",
+									  "/static/tavi.jpg",
+									  "/static/sun.jpg",
+									  "/static/clau.jpg",
+									  "/static/view.jpg",
+									  "/static/shack2.jpg",
+									  "/static/villas.jpg");
 
 				$banner_image_key = array_rand($banner_array, 1);
 
@@ -86,8 +98,15 @@
 								  "/static/shine3.gif",
 								  "/static/ween.jpg",
 								  "/static/ugly_boy.png",
-								  "/static/wejdas.jpg");
+								  "/static/wejdas.jpg",
+								  "/static/action.gif",
+								  "/static/chains.gif",
+								  "/static/shut_the_fuck_up.jpeg",
+								  "/static/lynx.webp",
+								  "/static/reed_warbler.jpg");
 
+			// reed warblers use the inclination of the magnetic field (magenta lines) to navigate to and find their breeding sites (yellow dots)
+			
 			$footer_image_key = array_rand($footer_array, 1);
 
 			$footer_img = $footer_array[$footer_image_key];
