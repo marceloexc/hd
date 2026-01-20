@@ -5,6 +5,10 @@ enum BoardType: string {
     case Naked = 'naked';
 }
 
+function isLocalhost($whitelist = ['127.0.0.1', '::1']) {
+    return in_array($_SERVER['REMOTE_ADDR'], $whitelist);
+}
+
 class Board
 {
 	public string $title;
@@ -86,22 +90,22 @@ class Board
 	}
 	
 	private function getBoardDescription(): string
+	{
+		switch ($this->type)
 		{
-			switch ($this->type)
-			{
-				case BoardType::ConfigFile:
-					$ini_array = parse_ini_file("$this->path/config.ini", false);
-					if (array_key_exists('description', $ini_array)) {
-						$description = $ini_array['description'];
-						return $description;
-					}
-					else {
-						return "";
-					}
-				default:
-					return "";
+			case BoardType::ConfigFile:
+			$ini_array = parse_ini_file("$this->path/config.ini", false);
+			if (array_key_exists('description', $ini_array)) {
+				$description = $ini_array['description'];
+				return $description;
 			}
+			else {
+				return "";
+			}
+			default:
+			return "";
 		}
+	}
 
     private function getBoardVisibility(): bool
     {
@@ -160,14 +164,21 @@ class BoardListingsRenderer
 				if ($board->description != "") {
 					echo "<li>
 						<a href=\"{$board->getCleanPath()}\">{$board->title}</a>
-						| {$board->description}
-					  </li>";
+						| {$board->description}";
 				} else {
 					echo "<li>
 						<a href=\"{$board->getCleanPath()}\">{$board->title}</a>
-						| {$formattedDate}
-					  </li>";
+						| {$formattedDate}";
 				}
+
+				/* if (isLocalhost()) {
+				   echo "localhost";
+				   } */
+
+				if (!$board->visible) {
+					echo "<span style='color: red;'> not visible!</span";
+				}
+				echo "</li>";
 
 			}
         }
