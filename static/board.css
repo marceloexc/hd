@@ -1,0 +1,114 @@
+
+
+body {
+	background-color: black;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-wrap: wrap;
+	font-family: 'Verdana', sans-serif;
+	font-size: 70%;
+	list-style: square;
+}
+
+article {
+	font-size: 110% !important;
+}
+
+.content {
+	max-width: 700px !important;
+	padding-bottom: 6em;
+}
+
+#content {
+	margin: 0 !important;
+}
+
+footer {
+	width: 300px;
+	margin-inline: auto;
+}
+
+header {
+	display: flex;
+	& img {
+		padding-top: 15em;
+	}
+	& svg {
+		width: 100%;
+	}
+}
+
+img, .footer-vid {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  padding-block: 1em;
+}
+
+figure {
+	margin: 0;
+	padding-bottom: 1em;
+}
+
+		 body {
+			 background: black !important;
+		 }
+		 h1, figcaption, h2, h3, h4, p {
+			 color: white;
+			 font: Tahoma !important ;
+		 }
+		 a {
+			 color: cyan;
+		 }
+
+		 img {
+			 width: 100%;
+		 }
+
+		 .figure-number {
+			 display: none;
+		 }
+
+svg{
+	font-family: MyCustom;
+	
+}
+
+li {
+	padding-block: 2px;
+}
+
+.listing a {
+	cursor: url("/static/open.svg"), pointer;
+}
+
+.listing a:hover{
+	background-color: bisque;
+}
+
+.clip {
+  -webkit-clip-path: url(#clip);
+  clip-path: url(#clip);
+  position: absolute;
+  z-index: 1;
+  max-width: 600px;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  
+}
+
+.clip.show {
+	opacity: 1;
+}
+
+figcaption, h1, h2, p {
+	padding-inline: 1px;
+}
+
+video {
+	max-width: 100%;
+}
+
