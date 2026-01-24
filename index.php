@@ -11,14 +11,20 @@ if ($uri !== '/' && file_exists($rootPath) && is_file($rootPath)) {
 	return false;
 }
 
-	// dir exists but no index → 404 
+// dir exists but no index → 404 
 if ($uri === '/') {
 	require __DIR__ . '/main_page.php';
 	exit;
 }
 
+
 if (file_exists($contentPath) && is_file($contentPath)) {
 	$mimeType = mime_content_type($contentPath);
+
+    if ($mimeType === 'text/plain' && pathinfo($contentPath, PATHINFO_EXTENSION) === 'css') {
+        $mimeType = 'text/css';
+    }
+	
 	if ($mimeType) {
 		header('Content-Type: ' . $mimeType);
 	}

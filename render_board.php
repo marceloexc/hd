@@ -164,11 +164,11 @@ class BoardListingsRenderer
 				if ($board->description != "") {
 					echo "<li>
 						<a href=\"{$board->getCleanPath()}\">{$board->title}</a>
-						| {$board->description}";
+						<span class='desc'>{$board->description} </span>";
 				} else {
 					echo "<li>
 						<a href=\"{$board->getCleanPath()}\">{$board->title}</a>
-						| {$formattedDate}";
+						<span class='desc'>{$formattedDate}</span>";
 				}
 
 				/* if (isLocalhost()) {
