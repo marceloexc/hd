@@ -44,6 +44,8 @@
 				</div>
 
 				<?php
+
+				/* lobotomy software  */
 				$banner_array = array("/static/banner.jpg",
 									  "/static/banner2.jpg",
 									  "/static/van.JPG",
@@ -57,7 +59,8 @@
 									  "/static/clau.jpg",
 									  "/static/view.jpg",
 									  "/static/shack2.jpg",
-									  "/static/villas.jpg");
+									  "/static/villas.jpg",
+									  "/static/fantastic_light.jpg");
 
 				$banner_image_key = array_rand($banner_array, 1);
 
@@ -95,7 +98,7 @@
 								  "/static/crash.mp4",
 								  "/static/mendez.jpeg",
 								  "/static/delft.png",
-								  "/static/shine3.gif",
+								  /* "/static/shine3.gif", */
 								  "/static/ween.jpg",
 								  "/static/ugly_boy.png",
 								  "/static/wejdas.jpg",
@@ -103,10 +106,13 @@
 								  "/static/chains.gif",
 								  "/static/shut_the_fuck_up.jpeg",
 								  "/static/lynx.webp",
-								  "/static/reed_warbler.jpg");
+								  "/static/reed_warbler.jpg",
+								  '/static/portrait.jpg',
+								  "/static/fox.jpg",
+								  "/static/wildebeest.png");
 
 			// reed warblers use the inclination of the magnetic field (magenta lines) to navigate to and find their breeding sites (yellow dots)
-			
+
 			$footer_image_key = array_rand($footer_array, 1);
 
 			$footer_img = $footer_array[$footer_image_key];
