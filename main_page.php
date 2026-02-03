@@ -1,13 +1,27 @@
 <!DOCTYPE html>
+
+
 <html>
 	<head>
-		<title>Disco duro</title>
 		<link rel="stylesheet" href="style.css" type="text/css">
 		<link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script src="hdr.js"> </script>
 		<?php
 		include 'render_board.php';
+
+		$motd_array = array("Disco Duro",
+							"Lobotomy Software",
+							"My life on the internet",
+							"Mendez Forever",
+							"Marcelographic",
+							"Im fine...bye bye",
+							"Pig worker");
+		$motd_key = array_rand($motd_array, 1);
+
+		$motd = $motd_array[$motd_key];
+
+		echo "<title>$motd</title>";
 		?>
 	</head>
 	<body>
