@@ -28,7 +28,10 @@ if (file_exists($contentPath) && is_file($contentPath)) {
 	if ($mimeType) {
 		header('Content-Type: ' . $mimeType);
 	}
-	
+
+    // cache my shit
+    header('Cache-Control: public, max-age=10200');
+
 	readfile($contentPath);
 	exit;
 }
