@@ -6,12 +6,12 @@ $rootPath    = __DIR__ . $uri;
 $contentPath = __DIR__ . '/content' . $uri;
 
 
-// serve static files 
+// serve static files
 if ($uri !== '/' && file_exists($rootPath) && is_file($rootPath)) {
 	return false;
 }
 
-// dir exists but no index → 404 
+// dir exists but no index → 404
 if ($uri === '/') {
 	require __DIR__ . '/main_page.php';
 	exit;
@@ -24,7 +24,12 @@ if (file_exists($contentPath) && is_file($contentPath)) {
     if ($mimeType === 'text/plain' && pathinfo($contentPath, PATHINFO_EXTENSION) === 'css') {
         $mimeType = 'text/css';
     }
-	
+
+    // make sure .org files are readable and don't just render as html
+    if (pathinfo($contentPath, PATHINFO_EXTENSION) === 'org') {
+        $mimeType = 'text/plain';
+    }
+
 	if ($mimeType) {
 		header('Content-Type: ' . $mimeType);
 	}
