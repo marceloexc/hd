@@ -123,7 +123,9 @@
 								  "/static/reed_warbler.jpg",
 								  '/static/portrait.jpg',
 								  "/static/fox.jpg",
-								  "/static/wildebeest.png");
+								  "/static/wildebeest.png",
+                                  "/static/itunes.png",
+                                  "/static/john-pankow-richard-kind.webp");
 
 			// reed warblers use the inclination of the magnetic field (magenta lines) to navigate to and find their breeding sites (yellow dots)
 
