@@ -88,6 +88,7 @@
 			<ul style="list-style: none; padding-left: 20px;" class="listing">
 				<?php
 				$boards = new BoardListingsRenderer("content");
+				$boards->populateBoards();
 				$boards->render();
 
 				?>

@@ -70,7 +70,7 @@ class Board
 				return $date;
 		}
 	}
-	
+
 	public function getCleanPath(): string
 	{
 		return '/' . $this->dir_name . '/';
@@ -88,7 +88,7 @@ class Board
             return $this->dir_name;
 		}
 	}
-	
+
 	private function getBoardDescription(): string
 	{
 		switch ($this->type)
@@ -133,7 +133,8 @@ class BoardListingsRenderer
         $this->directory = rtrim($directory, DIRECTORY_SEPARATOR);
     }
 
-    public function render(): void
+    // sorts the $boards by date
+    public function populateBoards(): void
     {
         $files = scandir($this->directory);
 
@@ -147,7 +148,10 @@ class BoardListingsRenderer
             }
 		}
         usort($this->boards, fn($b, $a) => $b->date_unix <=> $a->date_unix);
-		
+    }
+
+    public function render(): void
+    {
         foreach ($this->boards as $board) {
 
             if (!$board->visible) { continue; }
@@ -158,9 +162,9 @@ class BoardListingsRenderer
 				echo "<li>
             <a href=\"{$board->getCleanPath()}\">{$board->title}</a>
           </li>";
-				
+
 			} else {
-				
+
 				if ($board->description != "") {
 					echo "<li>
 						<a href=\"{$board->getCleanPath()}\">{$board->title}</a>
@@ -170,11 +174,6 @@ class BoardListingsRenderer
 						<a href=\"{$board->getCleanPath()}\">{$board->title}</a>
 						<span class='desc'>{$formattedDate}</span>";
 				}
-
-				/* if (isLocalhost()) {
-				   echo "localhost";
-				   } */
-
 				if (!$board->visible) {
 					echo "<span style='color: red;'> not visible!</span";
 				}
@@ -183,6 +182,10 @@ class BoardListingsRenderer
 			}
         }
 	}
+
+    public function getBoards() {
+        return $this->boards;
+    }
 }
 
 ?>
