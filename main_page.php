@@ -88,6 +88,7 @@
 			<ul style="list-style: none; padding-left: 20px;" class="listing">
 				<?php
 				$boards = new BoardListingsRenderer("content");
+				$boards->populateBoards();
 				$boards->render();
 
 				?>
@@ -123,7 +124,9 @@
 								  "/static/reed_warbler.jpg",
 								  '/static/portrait.jpg',
 								  "/static/fox.jpg",
-								  "/static/wildebeest.png");
+								  "/static/wildebeest.png",
+                                  "/static/itunes.png",
+                                  "/static/john-pankow-richard-kind.webp");
 
 			// reed warblers use the inclination of the magnetic field (magenta lines) to navigate to and find their breeding sites (yellow dots)
 
@@ -216,7 +219,7 @@
 
 			<br>	<br>
 			<p>
-				marcelo mendez 2025. <a href="/all.html">all</a>
+				marcelo mendez 2026. <a href="/all.html">all</a>
 			</p>
 
 
