@@ -55,13 +55,13 @@ foreach ($boards as $board) {
     $date = date(DATE_RFC822, $board->date_unix);
 
     // echo file_get_contents($index);
-    echo '<pre>';
-    print_r($board);
-    echo '</pre>';
+    // echo '<pre>';
+    // print_r($board);
+    // echo '</pre>';
 
-    echo $title;
-    echo $link;
-    echo $description;
+    // echo $title;
+    // echo $link;
+    // echo $description;
 
     $item = $masterXml->createElement("item");
     $item->appendChild($masterXml->createElement("title", $title));
